@@ -1,3 +1,9 @@
-#executable
-chronoBro
-main
+# build artifacts
+api/chronoBro
+
+# folders created for docker (local state)
+secrets/
+volumes/
+logs/
+
+

@@ -1,0 +1,46 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_password
+      POSTGRES_ROOT_PASSWORD_FILE: /run/secrets/db_password
+      POSTGRES_USER: chronoBro
+      # just putting this here so that I know the default DB
+      POSTGRES_DB: chronoBro
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - ./volumes/db:/var/lib/postgresql/data
+    ports: 
+      - 127.0.0.1:5432:5432
+    secrets:
+      - db_password
+
+  # web:
+  #   image: nginx:1-alpine
+  #   restart: always
+  #   volumes:
+  #     - ./web/html:/usr/share/nginx/html
+  #   ports: 
+  #     - 127.0.0.1:80:80
+  #     - 127.0.0.1:443:443
+
+  api:
+    image: alpine:3
+    entrypoint: /api/entrypoint.sh
+    environment:
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: chronoBro
+      POSTGRES_DB: chronoBro
+    volumes:
+      # - ./api/entrypoint.sh:/entrypoint.sh
+      - ./api/container_files/:/api
+    secrets:
+      - db_password
+
+secrets:
+  db_password:
+    file: secrets/dbpw.txt
+
