@@ -36,6 +36,6 @@ inotifyd_pid=$!
 
 # sleep till sigterm (should_quit updated via trap)
 while [[ $should_quit -ne 1 ]]; do 
-    sleep 500
+    sleep 1000
 done
 
