@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# note: requires inotify-tools to be installed
 SCRIPT_PATH=$(dirname $(realpath $0))
 cd $SCRIPT_PATH/api/pkg
 
