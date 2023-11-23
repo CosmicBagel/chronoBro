@@ -1,5 +1,5 @@
 # build artifacts
-api/chronoBro
+api/container_files/chronoBro
 
 # folders created for docker (local state)
 secrets/
