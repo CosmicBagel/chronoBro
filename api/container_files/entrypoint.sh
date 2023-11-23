@@ -18,8 +18,8 @@ trap on_sigterm SIGTERM
 chronoBro_pid=$!
 
 # watch using inotifyd, will run until file can't be watched any more (x event)
-# c change event, n create event
-inotifyd - /api:cn |
+# all the events except 0 r and a events
+inotifyd - /api:cewymndDMuox |
     while read -r event directory file; do
         if [[ "$file" == "chronoBro" ]]; then
             echo "API - exe modified ($event $directory $file)"
