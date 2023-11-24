@@ -18,7 +18,7 @@ trap on_sigterm SIGTERM
 chronoBro_pid=$!
 
 # watch using inotifyd, will run until file can't be watched any more (x event)
-# all the events except 0 r and a events
+# all the events except 0 r and a events (each letter of 'cewymndDMuox' is an event)
 inotifyd - /api:cewymndDMuox |
     while read -r event directory file; do
         if [[ "$file" == "chronoBro" ]]; then
@@ -36,6 +36,6 @@ inotifyd_pid=$!
 
 # sleep till sigterm (should_quit updated via trap)
 while [[ $should_quit -ne 1 ]]; do 
-    sleep 1000
+    sleep 0.5 
 done
 
