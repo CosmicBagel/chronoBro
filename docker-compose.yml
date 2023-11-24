@@ -36,9 +36,11 @@ services:
       POSTGRES_DB: chronoBro
     volumes:
       # - ./api/entrypoint.sh:/entrypoint.sh
-      - ./api/container_files/:/api
+      - ./api/container_files:/api
     secrets:
       - db_password
+    ports:
+      - 127.0.0.1:8080:8080
 
 secrets:
   db_password:
