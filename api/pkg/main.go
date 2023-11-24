@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 	"time"
 )
@@ -20,6 +21,9 @@ func main() {
 		- get from db
 	*/
 
+	// mux := http.NewServeMux()
+	// mux.Handle("", )
+
 	s := http.Server{
 		Addr:         ":8080",
 		ReadTimeout:  30 * time.Second,
@@ -37,5 +41,9 @@ func main() {
 }
 
 func hello(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("fsdafsadfasfd\n"))
+    _, err := fmt.Fprintf(w, "hello world %s\n", r.Method)
+    if err != nil {
+        panic(err)
+    }
 }
+// domain/service/objectReceivingAction/action/version
