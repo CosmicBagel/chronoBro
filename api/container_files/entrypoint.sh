@@ -19,7 +19,7 @@ chronoBro_pid=$!
 
 # watch using inotifyd, will run until file can't be watched any more (x event)
 # all the events except 0 r and a events (each letter of 'cewymndDMuox' is an event)
-inotifyd - /api:cewymndDMuox |
+inotifyd - /api:w |
     while read -r event directory file; do
         if [[ "$file" == "chronoBro" ]]; then
             echo "API - exe modified ($event $directory $file)"
