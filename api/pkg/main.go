@@ -46,15 +46,6 @@ func main() {
 func eventsPathHandler(w http.ResponseWriter, r *http.Request) {
 	idStr := strings.TrimPrefix(r.URL.Path, "/v1/events/")
 
-	/*//
-	now at the point where I need to check both http verb
-	and the path, and optional subpaths
-	nested resources (eg author/19/posts) also need to be
-	considered as potential optional subpaths
-	use http.StripPrefix handler wrapper maybe
-
-	//*/
-
 	if len(idStr) == 0 {
 		
 	}
