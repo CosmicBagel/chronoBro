@@ -20,8 +20,11 @@ import (
 
 func main() {
 
-	println("hello world")
+	println("hello world2")
 	println("lookie")
+
+	var trie RouteTrie[http.HandlerFunc]
+	trie.put()
 
 	mux := http.NewServeMux()
 	mux.HandleFunc("/v1/events/", eventsPathHandler)
