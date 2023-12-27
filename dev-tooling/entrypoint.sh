@@ -1,5 +1,4 @@
 #!/bin/ash
-
 should_quit=0
 
 # trap sigterm, and gracefully shutdown process via PID 
